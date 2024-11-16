@@ -41,7 +41,7 @@ export const WorkersResultView = () => {
                     <div className='text-center mt-5'>
                         <div className="w-[228px] h-[332px] bg-green"></div>
                         <div
-                            className="border-2 border-black rounded-[55px] mt-[43px] py-[30px] px-[30px] font-angst text-black font-normal text-[64px] inline-block text-center">
+                            className="border-2 border-black bg-white rounded-[55px] mt-[43px] py-[20px] px-[30px] font-angst text-black font-normal text-[64px] inline-block text-center">
                             89%
                         </div>
                     </div>

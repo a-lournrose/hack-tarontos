@@ -1,5 +1,5 @@
-import { FC } from "react";
-import { Outlet } from "react-router-dom";
+import {FC} from "react";
+import {Outlet} from "react-router-dom";
 import {HeaderBlock} from "@/widgets/HeaderBlock.tsx";
 import bgImage from "@/assets/bg/bg-layout-1.png";
 import {Tabs, TabsList, TabsTrigger} from "@/components/ui/tabs.tsx";
