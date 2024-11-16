@@ -11,9 +11,13 @@ interface IWorker {
 }
 
 export class WorkersService {
-    static async get(id: string) {
+    static async getOne(id: string) {
         const response = await $api.get(`/workers/${id}`);
         return response.data;
+    }
+
+    static async getAll(companyId: number = 2) {
+        return $api.get(`/workers?companyId=${companyId}`);
     }
 
     static async patch(id: string) {
@@ -35,4 +39,6 @@ export class WorkersService {
         const response = await $api.post(`/workers/worker/${id}`);
         return response.data;
     }
+
+
 }

@@ -2,7 +2,9 @@ import SunImg from "@/assets/images/sun-workers.svg?react";
 import {HoverCard, HoverCardContent, HoverCardTrigger} from "@/components/ui/hover-card.tsx";
 import {CalendarDays} from "lucide-react";
 
-export const WorkersResultView = () => {
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
+export const WorkersResultView = ({compareData}) => {
     return (
         <div className="h-full w-full grid grid-cols-[228px_1fr_228px] gap-4">
             {/* Левый блок - фиксированная ширина 228px */}
@@ -35,7 +37,7 @@ export const WorkersResultView = () => {
             {/* Центральный блок - заполняет всю доступную ширину */}
             <div className="relative">
                 <h1 className="font-angst font-normal text-[40px] text-center">
-                    Узнай свою совместимость с пользователем
+                    Узнай совместимость двух коллег
                 </h1>
                 <div className="flex justify-center">
                     <div className='text-center mt-5'>

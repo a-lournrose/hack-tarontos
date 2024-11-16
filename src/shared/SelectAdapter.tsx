@@ -18,10 +18,11 @@ interface CustomSelectProps {
     items: SelectItemType[];
     label?: string;
     placeholder: string;
+    onChange: (value: string | number) => void;
 }
 
-const SelectAdapter: React.FC<CustomSelectProps> = ({items, label, placeholder}) => (
-    <Select>
+const SelectAdapter: React.FC<CustomSelectProps> = ({items, label, placeholder, onChange}) => (
+    <Select onValueChange={onChange}>
         <SelectTrigger className="w-full">
             <SelectValue placeholder={placeholder}/>
         </SelectTrigger>
