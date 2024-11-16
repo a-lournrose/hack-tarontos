@@ -3,11 +3,11 @@ import {useEffect, useState} from "react";
 import {WorkersResultView} from "@/pages/WorkersPage/WorkersResultView.tsx";
 
 const WorkersPage = () => {
-    const [compareData, setCompareData] = useState({});
+    const [compareData, setCompareData] = useState(null);
     const [resultStatus, setResultStatus] = useState<boolean>(false);
 
     useEffect(() => {
-        if (compareData && Array.isArray(compareData) && compareData.length) {
+        if (compareData) {
             setResultStatus(true);
         }
     }, [compareData]);

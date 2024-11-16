@@ -2,9 +2,21 @@ import SunImg from "@/assets/images/sun-workers.svg?react";
 import {HoverCard, HoverCardContent, HoverCardTrigger} from "@/components/ui/hover-card.tsx";
 import {CalendarDays} from "lucide-react";
 
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-expect-error
-export const WorkersResultView = ({compareData}) => {
+type card = {
+    id: number;
+    name: string;
+    goodPercent: number;
+    meaning: string[]
+    imageUrl: string;
+}
+export type compareResult = {
+    cards: card[];
+    resultCompareHard: number;
+    magicComparePercent: number;
+    magicCompareText: string;
+}
+export const WorkersResultView = ({compareData} : {compareData: compareResult | null}) => {
+
     return (
         <div className="h-full w-full grid grid-cols-[228px_1fr_228px] gap-4">
             {/* Левый блок - фиксированная ширина 228px */}
@@ -30,7 +42,9 @@ export const WorkersResultView = ({compareData}) => {
                         </div>
                     </HoverCardContent>
                 </HoverCard>
-                <div className="w-[228px] h-[332px] bg-green"></div>
+                <div className="w-[228px] h-[332px] bg-green">
+                    <img src={compareData?.cards[0].imageUrl} alt="Аркан"/>
+                </div>
             </div>
 
 
@@ -41,10 +55,12 @@ export const WorkersResultView = ({compareData}) => {
                 </h1>
                 <div className="flex justify-center">
                     <div className='text-center mt-5'>
-                        <div className="w-[228px] h-[332px] bg-green"></div>
+                        <div className="w-[228px] h-[332px] bg-green">
+                            <img src={compareData?.cards[1].imageUrl} alt="Аркан" className='block'/>
+                        </div>
                         <div
                             className="border-2 border-black bg-white rounded-[55px] mt-[43px] py-[20px] px-[30px] font-angst text-black font-normal text-[64px] inline-block text-center">
-                            89%
+                            {compareData?.resultCompareHard}%
                         </div>
                     </div>
                 </div>
@@ -53,7 +69,9 @@ export const WorkersResultView = ({compareData}) => {
 
             {/* Правый блок - фиксированная ширина 228px */}
             <div className="w-[228px] relative">
-                <div className="w-[228px] h-[332px] bg-green"></div>
+                <div className="w-[228px] h-[332px] bg-green">
+                    <img src={compareData?.cards[2].imageUrl} alt="Аркан"/>
+                </div>
                 <SunImg className='mt-[53px]'/>
             </div>
         </div>

@@ -74,7 +74,7 @@ export const WorkersInitView: FC<WorkersInitViewProps> = ({setCompareData}) => {
                 <div
                     className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-[-5%] w-[100%] h-auto">
                     <div
-                        className="w-[70%] h-[173px] bg-orange bg-opacity-85 mx-auto rounded-[16px] flex items-center justify-center">
+                        className="w-[70%] h-[173px] mx-auto rounded-[16px] flex items-center justify-center">
                         <Button variant='dark' onClick={counting}>Начать расчет</Button>
                     </div>
                 </div>

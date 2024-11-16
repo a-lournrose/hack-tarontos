@@ -10,6 +10,9 @@ import YouTubeIcon from "@/assets/icons/youtube.svg?react";
 import BigSun from "@/assets/images/sun-orange.svg?react";
 import SmallSun from "@/assets/images/sun-black.svg?react";
 import RedStar from "@/assets/images/red-star.svg?react";
+import {useAuth} from "@/context/AuthContext.tsx";
+import {useNavigate} from "react-router-dom";
+
 
 const TextBlock: FC<{ title: string; text: string }> = ({title, text}) => {
     return (
@@ -20,7 +23,20 @@ const TextBlock: FC<{ title: string; text: string }> = ({title, text}) => {
     )
 }
 
+
+
 export const HomePage = () => {
+    const {isAuthenticated} = useAuth();
+    const navigate = useNavigate();
+
+    const startButtonClick = () => {
+        if(isAuthenticated){
+            navigate('/app/workers');
+        }
+        else{
+            navigate('/auth');
+        }
+    }
     return (
         <div>
             <div className='h-full w-full bg-green overflow-hidden'>
@@ -36,7 +52,7 @@ export const HomePage = () => {
                             команде</h1>
                     </div>
                     <div className='flex justify-center mt-7'>
-                        <Button>НАЧНЕМ!</Button>
+                        <Button onClick={startButtonClick}>НАЧНЕМ!</Button>
                     </div>
                     <div
                         className="flex items-center px-[22px] py-[5px] rounded-[100px] bg-white max-w-max mx-auto mt-40 relative z-10">
@@ -62,18 +78,22 @@ export const HomePage = () => {
                                text='Создай бесплатный аккаунт на сайте, указав свою профессию, интересы, ценности и основные требования к коллегам.'/>
                 </div>
                 <div className='flex justify-end mt-24'>
-                    <TextBlock title='2. Проходи тест'
-                               text='Ответь на вопросы теста, чтобы подробно охарактеризовать свой стиль работы и предпочтения в коллективе. '/>
+                    <TextBlock title='2. Отправляй тесты'
+                               text='Пусть кандидаты ответят на вопросы теста, чтобы получить подробную характеристику их стиля работы и предпочтений в коллективе. '/>
                 </div>
                 <div className='flex justify-start mt-24'>
                     <TextBlock title='3. Получи результат'
-                               text='После прохождения теста, сайт предложит тебе список пользователей, с которыми ты с большей вероятностью будешь хорошо ладить. '/>
+                               text='После прохождения теста, сайт предложит тебе список кандидатов, с которыми компания с большей вероятностью будет хорошо ладить. '/>
                 </div>
             </div>
             <div className='h-72 bg-[#F4F6F6] w-full mt-72 flex justify-center'>
                 <div className='flex items-center gap-10 mt-[98px]'>
-                    <TelegramIcon className='cursor-pointer'/>
-                    <VKIcon className='cursor-pointer'/>
+                    <a href="https://t.me/naimix">
+                        <TelegramIcon/>
+                    </a>
+                    <a href="https://vk.com/naimixinfo">
+                        <VKIcon/>
+                    </a>
                     <OkIcon className='cursor-pointer'/>
                     <YouTubeIcon className='cursor-pointer'/>
                     <RedditIcon className='cursor-pointer'/>

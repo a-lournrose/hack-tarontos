@@ -16,7 +16,7 @@ export class WorkersService {
         return response.data;
     }
 
-    static async getAll(companyId: number = 2) {
+    static async getAll(companyId: number = 1) {
         return $api.get(`/workers?companyId=${companyId}`);
     }
 

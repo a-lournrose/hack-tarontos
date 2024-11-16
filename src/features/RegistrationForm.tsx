@@ -11,10 +11,10 @@ import {
     FormLabel,
 } from "@/components/ui/form.tsx"
 import { Input } from "@/components/ui/input.tsx"
-import {Checkbox} from "@/components/ui/checkbox.tsx";
 import {Card} from "@/components/ui/card.tsx";
 import {useAuth} from "@/context/AuthContext.tsx";
 import {useNavigate} from "react-router-dom";
+import {RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 
 const formSchema = z.object({
     username: z.string().min(2, {
@@ -43,13 +43,6 @@ export function ProfileForm() {
     const {register} = useAuth();
     const navigate = useNavigate();
 
-    const handleCheckboxChange = (option: "Administrator" | "Recruiter") => {
-        if (option === "Recruiter") {
-            form.setValue("role", "Administrator");
-        } else {
-            form.setValue("role", "Recruiter");
-        }
-    };
     return (
         <Card className='p-[24px] w-[400px]'>
             <div className='mb-[16px]'>
@@ -99,28 +92,34 @@ export function ProfileForm() {
                         name='role'
                         render={({ field }) => (
                             <div>
-                                <FormItem onClick={() => handleCheckboxChange(form.watch("role"))} className='flex gap-[3px] items-center mb-[8px]'>
-                                        <FormControl>
-                                            <Checkbox
-                                                checked={form.watch("role") == "Recruiter"}
-                                                {...field}
-
-                                                id="recruiter"
-                                            />
-                                        </FormControl>
-                                        <FormLabel>РЕКРУТЕР</FormLabel>
-                                </FormItem>
-                                <FormItem onClick={() => handleCheckboxChange(form.watch("role"))} className='flex gap-[3px] items-center'>
+                                <FormItem className="space-y-3">
                                     <FormControl>
-                                        <Checkbox
-                                            checked={form.watch("role") == "Administrator"}
-                                            {...field}
+                                        <RadioGroup
+                                            onValueChange={field.onChange}
+                                            defaultValue={field.value}
+                                            className="flex flex-col space-y-1"
+                                        >
+                                            <FormItem className="flex items-center space-x-3 space-y-0">
+                                                <FormControl>
+                                                    <RadioGroupItem value="Recruiter" />
+                                                </FormControl>
+                                                <FormLabel className="font-normal">
+                                                    РЕКРУТЕР
+                                                </FormLabel>
+                                            </FormItem>
+                                            <FormItem className="flex items-center space-x-3 space-y-0">
+                                                <FormControl>
+                                                    <RadioGroupItem value="Administrator" />
+                                                </FormControl>
+                                                <FormLabel className="font-normal">
+                                                    АДМИНИСТРАТОР
+                                                </FormLabel>
+                                            </FormItem>
 
-                                            id="administrator"
-                                        />
+                                        </RadioGroup>
                                     </FormControl>
-                                    <FormLabel>АДМИНИСТРАТОР</FormLabel>
                                 </FormItem>
+
                             </div>
                         )}
                     />
