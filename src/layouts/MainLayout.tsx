@@ -33,8 +33,8 @@ export const MainLayout: FC = () => {
             <div
                 className="flex-none flex items-center justify-center"
                 style={{
-                    height: '100px', // Фиксированная высота нижнего блока
-                    marginBottom: '20px' // Отступ от нижнего края экрана
+                    height: '100px',
+                    marginBottom: '20px'
                 }}
             >
                 <Tabs defaultValue='worker_worker'>
