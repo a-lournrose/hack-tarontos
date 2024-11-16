@@ -9,6 +9,7 @@ const WorkersPage = () => {
     useEffect(() => {
         if (compareData) {
             setResultStatus(true);
+
         }
     }, [compareData]);
 
