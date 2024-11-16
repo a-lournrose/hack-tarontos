@@ -43,7 +43,7 @@ export const WorkersResultView = ({compareData} : {compareData: compareResult | 
                     </HoverCardContent>
                 </HoverCard>
                 <div className="w-[228px] h-[332px] bg-green">
-                    <img src={compareData?.cards[0].imageUrl} alt="Аркан"/>
+                    <img src={compareData?.cards[0].imageUrl} alt="Аркан" className='w-[100%] h-[100%] object-cover'/>
                 </div>
             </div>
 
@@ -56,7 +56,7 @@ export const WorkersResultView = ({compareData} : {compareData: compareResult | 
                 <div className="flex justify-center">
                     <div className='text-center mt-5'>
                         <div className="w-[228px] h-[332px] bg-green">
-                            <img src={compareData?.cards[1].imageUrl} alt="Аркан" className='block'/>
+                            <img src={compareData?.cards[1].imageUrl} alt="Аркан" className='w-[100%] h-[100%] object-cover'/>
                         </div>
                         <div
                             className="border-2 border-black bg-white rounded-[55px] mt-[43px] py-[20px] px-[30px] font-angst text-black font-normal text-[64px] inline-block text-center">
@@ -70,7 +70,7 @@ export const WorkersResultView = ({compareData} : {compareData: compareResult | 
             {/* Правый блок - фиксированная ширина 228px */}
             <div className="w-[228px] relative">
                 <div className="w-[228px] h-[332px] bg-green">
-                    <img src={compareData?.cards[2].imageUrl} alt="Аркан"/>
+                    <img src={compareData?.cards[2].imageUrl} alt="Аркан" className='w-[100%] h-[100%] object-cover'/>
                 </div>
                 <SunImg className='mt-[53px]'/>
             </div>
