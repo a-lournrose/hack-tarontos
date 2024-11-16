@@ -17,16 +17,15 @@ interface IAuthProvider {
 
 export const AuthContext = createContext<IAuthContext | undefined>(undefined);
 
-export const AuthProvider = ({children}: IAuthProvider) => {
-    const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+export const AuthProvider = ({ children }: IAuthProvider) => {
+    const [isAuthenticated, setIsAuthenticated] = useState<boolean>(!!localStorage.getItem('token'));
+
     useEffect(() => {
         const token = localStorage.getItem('token');
-
         if (token) {
-            // Запрос на получение инфы от пользователя
             setIsAuthenticated(true);
         }
-    }, [])
+    }, []);
 
     const login = async (user: LoginData) => {
         const response = await AuthService.login(user);
@@ -39,18 +38,18 @@ export const AuthProvider = ({children}: IAuthProvider) => {
         setIsAuthenticated(false);
     };
 
-    const register = async (user: RegisterData) =>{
+    const register = async (user: RegisterData) => {
         const response = await AuthService.register(user);
-        localStorage.setItem("token", response.accessToken);
+        localStorage.setItem('token', response.accessToken);
         setIsAuthenticated(true);
-    }
+    };
 
     return (
-        <AuthContext.Provider value={{isAuthenticated, login, logout, register}}>
+        <AuthContext.Provider value={{ isAuthenticated, login, logout, register }}>
             {children}
         </AuthContext.Provider>
-    )
-}
+    );
+};
 
 
 export const useAuth = (): IAuthContext => {

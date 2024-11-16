@@ -6,15 +6,17 @@ import ProtectedRoute from "@/router/ProtectedRoute.tsx";
 export const Router: FC = () => (
     <BrowserRouter>
         <Routes>
-            {/* Маппинг публичных маршрутов */}
             {publicRoutes.map((route, index) => (
-                <Route key={index} path={route.path} element={route.element}/>
+                <Route key={index} path={route.path} element={route.element} />
             ))}
 
-            {/* Маппинг приватных маршрутов через ProtectedRoute */}
-            <Route element={<ProtectedRoute/>}>
+            <Route element={<ProtectedRoute />}>
                 {privateRoutes.map((route, index) => (
-                    <Route key={index} path={route.path} element={route.element}/>
+                    <Route key={index} path={route.path} element={route.element}>
+                        {route?.children?.map((child, childIndex) => (
+                            <Route key={childIndex} path={child.path} element={child.element} />
+                        ))}
+                    </Route>
                 ))}
             </Route>
         </Routes>
